@@ -1,0 +1,12 @@
+{
+  "name": "angularjs",
+  "version": "1.0.0",
+  "description": "Test task",
+  "main": "index.js",
+  "repository": "git@github.com:vitokg/angularjs.git",
+  "author": "viktoriagoncharuk <viktoria.goncharuk@everything5pounds.com>",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^5.88.2"
+  }
+}
