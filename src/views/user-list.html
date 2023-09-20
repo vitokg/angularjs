@@ -1,0 +1,20 @@
+<button ng-click="callNotify(message);">Create User</button>
+<table>
+  <thead>
+  <tr>
+    <th ng-repeat="column in columns">
+      {{column | uppercase}}
+    </th>
+  </tr>
+
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in users">
+      <td>{{user.username}}</td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.type}}</td>
+    </tr>
+  </tbody>
+</table>
