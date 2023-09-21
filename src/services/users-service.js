@@ -5,7 +5,7 @@ export const userService = () => {
         firstName: 'Matthew',
         lastName: 'Perry',
         email: 'matthew@mail.com',
-        type: 'Administrator'
+        type: 'Administrator',
       },
       {
         username: 'mperry1992',

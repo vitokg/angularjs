@@ -1,0 +1,47 @@
+<button type="button" ng-click="hideForm()">X</button>
+<form>
+  <div>
+    <label for="username" >Username: </label><br />
+    <input type="text" id="username" ng-model="user.username" required />
+    <span style = "color:red" ng-show = "user.username.$dirty && user.username.$invalid">
+        <span ng-show = "user.username.$error.required">Username is required.</span>
+     </span>
+  </div>
+
+  <div>
+    <label for="firstName" >First Name: </label><br />
+    <input type="text" id="firstName" ng-model="user.firstName" required/>
+  </div>
+
+  <div>
+    <label for="lastName">Last Name</label><br />
+    <input type="text" id="lastName" ng-model="user.lastName"  required/>
+  </div>
+
+  <div>
+    <label for="email">Email</label><br />
+    <input type="email" id="email" ng-model="user.email" />
+  </div>
+
+  <div>
+    <label for="type">Type</label><br />
+    <select id="type">
+      <option ng-repeat="type in userTypes" value="{{type}}">{{type}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="password">Password</label><br />
+    <input type="password" id="password" ng-model="user.password" />
+  </div>
+
+  <div>
+    <label for="confirmPassword">Repeat Password</label><br />
+    <input type="password" id="confirmPassword" ng-model="user.confirmPassword" />
+  </div>
+
+  <input type="submit" ng-click="createUser()" value="Create" />
+  <input type="reset" ng-click="deleteUser()" value="Delete" />
+  <input type="reset" ng-click="saveUser()" value="Save" />
+
+</form>

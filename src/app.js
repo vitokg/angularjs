@@ -1,15 +1,15 @@
 import angular from 'angular';
 import ngRoute from 'angular-route'
-import { UserListController, UserDetailsController }  from './controllers';
+import {UserListController, UserDetailsController, UserFormController} from './controllers';
 import {routing} from './app-routing';
-import userListHtml from './views/user-list.html';
-import userDetailsHtml from './views/user-details.html';
+import { userListHtml, userDetailsHtml, userFormHtml} from './views';
 import {userService} from "./services/users-service";
 
 export const initApp = () => {
   angular.module('app', [ngRoute])
     .controller('userListController', UserListController)
     .controller('userDetailsController', UserDetailsController)
+    .controller('userFormController', UserFormController)
     .component('userList', {
       template: userListHtml,
       controller: 'userListController'
@@ -17,6 +17,14 @@ export const initApp = () => {
     .component('userDetails', {
       template: userDetailsHtml,
       controller: 'userDetailsController'
+    })
+    .component('userForm', {
+      template: userFormHtml,
+      bindings: {
+        user: '<',
+        onUpdate: '&'
+      },
+      controller: 'userFormController'
     })
     .factory('userService', userService)
   .config(routing)
