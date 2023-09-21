@@ -3,6 +3,7 @@ export const UserListController = ($scope, userService, $location) => {
     $scope.user = {};
     $scope.columns = ['Username', 'First Name', 'Last Name', 'Email', 'Type'];
     $scope.isFormVisible = false;
+
     $scope.showForm = () => {
       $scope.isFormVisible = true;
     };
@@ -18,7 +19,12 @@ export const UserListController = ($scope, userService, $location) => {
     $scope.onUserCreate = () => {
       userService.createUser($scope.user);
       $scope.user = {};
-      $scope.isFormVisible = false;
+      $scope.reset();
     }
+
+  $scope.reset = function() {
+    $scope.user.firstName = "";
+    $scope.user.lastName = "";
+  }
   }
 

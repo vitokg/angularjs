@@ -1,3 +1,7 @@
-<user-form user="user"></user-form>
-<button type="button" ng-click="onDelete()">Delete</button>
-<button type="button" ng-click="onSave()">Save</button>
+<section class="content user-details-page">
+  <h1>{{user.firstName}} {{user.lastName}}</h1>
+  <user-form user="user"></user-form>
+  <button type="button" class="btn btn--secondary" ng-click="onDelete()">Delete</button>
+  <button type="button" class="btn btn--primary" ng-click="onSave()">Save</button>
+</section>
+

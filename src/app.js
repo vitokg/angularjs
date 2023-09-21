@@ -1,3 +1,4 @@
+import './styles.scss';
 import angular from 'angular';
 import ngRoute from 'angular-route'
 import {UserListController, UserDetailsController, UserFormController} from './controllers';

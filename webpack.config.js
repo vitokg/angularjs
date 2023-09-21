@@ -34,6 +34,14 @@ const config = {
                 test: /\.html$/i,
                 loader: "html-loader",
             },
+            {
+                test: /\.scss$/, // Match .scss files
+                use: [
+                    'style-loader', // Inject CSS into the DOM
+                    'css-loader',   // Load CSS
+                    'sass-loader'   // Compile SCSS to CSS
+                ]
+            },
 
             // Add your rules for custom modules here
             // Learn more about loaders from https://webpack.js.org/loaders/

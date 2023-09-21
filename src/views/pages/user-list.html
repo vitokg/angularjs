@@ -1,19 +1,28 @@
 <div id="popup" ng-if="isFormVisible">
-  <button type="button" ng-click="hideForm()">X</button>
+  <div class="text-right">
+    <h3>Create new user</h3>
+    <button type="button" class="btn btn__close" ng-click="hideForm()">x</button>
+  </div>
+
   <user-form user="user"></user-form>
-  <button type="button" ng-click="onUserCreate()">Create</button>
+  <div class="text-center">
+    <button type="button" class="btn btn--primary"  ng-click="onUserCreate()">Create</button>
+  </div>
 </div>
 
-<button ng-click="showForm();">Create User</button>
-<table>
-  <thead>
-  <tr>
-    <th ng-repeat="column in columns">
-      {{column | uppercase}}
-    </th>
-  </tr>
-  </thead>
-  <tbody>
+<section class="action-panel text-right">
+  <button class="btn btn--primary" ng-click="showForm();">Create User</button>
+</section>
+<section class="content">
+  <table class="user-list" >
+    <thead>
+    <tr>
+      <th ng-repeat="column in columns">
+        {{column | uppercase}}
+      </th>
+    </tr>
+    </thead>
+    <tbody>
     <tr ng-repeat="user in users track by $index" ng-click="viewDetails(user.username)">
       <td>{{user.username}}</td>
       <td>{{user.firstName}}</td>
@@ -21,5 +30,7 @@
       <td>{{user.email}}</td>
       <td>{{user.type}}</td>
     </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</section>
+
