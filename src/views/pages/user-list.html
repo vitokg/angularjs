@@ -1,4 +1,9 @@
-<user-form ng-if="isFormVisible"></user-form>
+<div id="popup" ng-if="isFormVisible">
+  <button type="button" ng-click="hideForm()">X</button>
+  <user-form user="user"></user-form>
+  <button type="button" ng-click="onUserCreate()">Create</button>
+</div>
+
 <button ng-click="showForm();">Create User</button>
 <table>
   <thead>
@@ -7,10 +12,9 @@
       {{column | uppercase}}
     </th>
   </tr>
-
   </thead>
   <tbody>
-    <tr ng-repeat="user in users track by $index" ng-click="viewDetails($index)">
+    <tr ng-repeat="user in users track by $index" ng-click="viewDetails(user.username)">
       <td>{{user.username}}</td>
       <td>{{user.firstName}}</td>
       <td>{{user.lastName}}</td>

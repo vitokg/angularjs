@@ -1,6 +1,9 @@
-export const UserFormController = ($scope) => {
-  console.log($scope);
-  $scope.user = {};
+export const UserFormController = function ($scope) {
+  this.$onInit = function () {
+    $scope.user = this.user || {};
+    console.log('User property:', this.user);
+  };
+
   $scope.userTypes = ['Administator', 'Driver'];
   $scope.createUser = () => {
     console.log('create user');
