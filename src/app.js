@@ -28,6 +28,26 @@ export const initApp = () => {
       controller: 'userFormController'
     })
     .factory('userService', userService)
+  .config(($httpProvider) => {
+    $httpProvider.interceptors.push(($q) =>{
+      return {
+        'request': function(config) {
+          // same as above
+        },
+
+        'response': function(response) {
+          // same as above
+        },
+        'requestError': function(rejection) {
+          // do something on error
+          if (canRecover(rejection)) {
+            return responseOrNewPromise
+          }
+          return $q.reject(rejection);
+        },
+      };
+    });
+  })
   .config(routing)
 }
 

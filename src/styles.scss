@@ -1,6 +1,7 @@
 :root {
   --body-color: #EFF0F8;
   --primary-text-color: #3F4254;
+  --heading-text-color: #A4A4B5;
   --main-btn-color: #2F8FF0;
   --secondary-btn-color: #F54582;
   --white-color: #FFFFFF;
@@ -76,6 +77,7 @@ body {
 
   th {
     text-align: left;
+    color: var(--heading-text-color);
   }
 
   th, td {
