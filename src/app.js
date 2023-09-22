@@ -5,6 +5,7 @@ import {UserListController, UserDetailsController, UserFormController} from './c
 import {routing} from './app-routing';
 import { userListHtml, userDetailsHtml, userFormHtml} from './views';
 import {userService} from "./services/users-service";
+import {passwordStrength} from "./directives/passwordStrength";
 
 export const initApp = () => {
   angular.module('app', [ngRoute])
@@ -22,13 +23,13 @@ export const initApp = () => {
     .component('userForm', {
       template: userFormHtml,
       bindings: {
-        user: '<',
-        onUpdate: '&'
+        user: '<'
       },
       controller: 'userFormController'
     })
     .factory('userService', userService)
-  .config(($httpProvider) => {
+    .directive('passwordStrength', passwordStrength)
+    .config(($httpProvider) => {
     $httpProvider.interceptors.push(($q) =>{
       return {
         'request': function(config) {
