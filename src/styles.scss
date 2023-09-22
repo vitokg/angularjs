@@ -45,6 +45,12 @@ body {
     background-color: var(--secondary-btn-color);
   }
 
+  &:disabled {
+    background-color: var(--heading-text-color);
+    pointer-events: none;
+
+  }
+
   &__close {
     color: var(--primary-text-color);
     font-size: 22px;
@@ -165,4 +171,8 @@ input.ng-invalid.ng-touched {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.error-message {
+  color: var(--error-color);
 }

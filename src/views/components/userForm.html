@@ -3,23 +3,38 @@
     <label for="username" >Username: </label><br />
     <input type="text" id="username" name="username" ng-model="user.username" required />
     <div ng-show="userForm.$submitted || userForm.username.$touched">
-        <span ng-show = "userForm.username.$error.required">Username is required.</span>
+        <span class="error-message" ng-show = "userForm.username.$error.required">Username is required.</span>
     </div>
   </div>
 
   <div>
     <label for="firstName" >First Name: </label><br />
     <input type="text" id="firstName" name="firstName" ng-model="user.firstName" required/>
+    <div ng-show="userForm.$submitted || userForm.firstName.$touched">
+      <span class="error-message" ng-show = "userForm.firstName.$error.required">
+        First name is required.
+      </span>
+    </div>
   </div>
 
   <div>
     <label for="lastName">Last Name</label><br />
     <input type="text" id="lastName" name="lastName" ng-model="user.lastName"  required/>
+    <div ng-show="userForm.$submitted || userForm.lastName.$touched">
+      <span class="error-message" ng-show = "userForm.lastName.$error.required">
+        Last name is required.
+      </span>
+    </div>
   </div>
 
   <div>
     <label for="email">Email</label><br />
     <input type="email" id="email" name="email" ng-model="user.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
+    <div ng-show="userForm.$submitted || userForm.email.$touched">
+      <span class="error-message" ng-show = "userForm.email.$error.required">
+        Email is required.
+      </span>
+    </div>
   </div>
 
   <div>
@@ -29,19 +44,41 @@
         {{type}}
       </option>
     </select>
+    <div ng-show="userForm.$submitted || userForm.type.$touched">
+      <span class="error-message" ng-show = "userForm.type.$error.required">
+        Please select type.
+      </span>
+    </div>
   </div>
 
   <div>
     <label for="password">Password</label><br />
     <input type="password" id="password" name="password" password-strength  ng-model="user.password" />
 
-    <span ng-show = "userForm.password.$touched && userForm.password.$error.passwordStrength">
+    <span class="error-message" ng-show = "userForm.password.$touched && userForm.password.$error.passwordStrength">
       Password must be min length 8. at least one number and one letter.
     </span>
   </div>
 
   <div>
     <label for="confirmPassword">Repeat Password</label><br />
-    <input type="password" id="confirmPassword" ng-model="user.confirmPassword" />
+    <input type="password" id="confirmPassword" name="confirmPassword" ng-model="user.confirmPassword" />
+    <div ng-show="userForm.$submitted || userForm.confirmPassword.$touched">
+      <span class="error-message" ng-show = "userForm.password.$viewValue !== userForm.confirmPassword.$viewValue">
+        Passwords are not equal.
+      </span>
+    </div>
+  </div>
+
+
+  <div ng-if="!isCreateFlow" class="d-flex justify-between actions">
+    <button type="button" class="btn btn--secondary" ng-click="onDelete()">Delete</button>
+    <button
+        type="button" class="btn btn--primary"
+        ng-click="onUpdate()"
+        ng-disabled="userForm.$invalid">Save</button>
+  </div>
+  <div ng-if="isCreateFlow" class="text-center">
+    <button type="button" class="btn btn--primary"  ng-click="onCreate()">Create</button>
   </div>
 </form>

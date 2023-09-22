@@ -15,16 +15,5 @@ export const UserListController = ($scope, userService, $location) => {
     $scope.viewDetails = (index) => {
       $location.path(`/users/${index}`);
     }
-
-    $scope.onUserCreate = () => {
-      userService.createUser($scope.user).then(() => {
-        $scope.user = {};
-        console.log('User added successfull');
-      }).catch(() => {
-        console.log('There is an error');
-        }
-      );
-
-    }
   }
 
