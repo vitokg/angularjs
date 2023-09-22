@@ -9,6 +9,21 @@ import {passwordStrength} from "./directives/passwordStrength";
 
 export const initApp = () => {
   angular.module('app', [ngRoute])
+    .factory('userService', userService)
+    .factory('errorInterceptor', ($q, $location) => {
+      return {
+        responseError: function(rejection) {
+          if(rejection.status === 403) {
+            $location.path('/403');
+            return $q.reject(rejection);
+          }
+        }
+      };
+    })
+    .config(($httpProvider) => {
+      $httpProvider.interceptors.push('errorInterceptor');
+    })
+    .directive('passwordStrength', passwordStrength)
     .controller('userListController', UserListController)
     .controller('userDetailsController', UserDetailsController)
     .controller('userFormController', UserFormController)
@@ -27,28 +42,6 @@ export const initApp = () => {
       },
       controller: 'userFormController'
     })
-    .factory('userService', userService)
-    .directive('passwordStrength', passwordStrength)
-    .config(($httpProvider) => {
-    $httpProvider.interceptors.push(($q) =>{
-      return {
-        'request': function(config) {
-          // same as above
-        },
-
-        'response': function(response) {
-          // same as above
-        },
-        'requestError': function(rejection) {
-          // do something on error
-          if (canRecover(rejection)) {
-            return responseOrNewPromise
-          }
-          return $q.reject(rejection);
-        },
-      };
-    });
-  })
-  .config(routing)
+    .config(routing)
 }
 
