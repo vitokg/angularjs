@@ -7,7 +7,7 @@ export const UserFormController = function ($scope, userService, $location) {
   };
 
   $scope.onDelete = () => {
-    userService.deleteUser($scope.userId);
+    userService.deleteUser($scope.user.username);
     $scope.hideForm();
   }
   $scope.isFormValid = () => {

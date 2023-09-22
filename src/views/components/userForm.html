@@ -62,7 +62,7 @@
 
   <div>
     <label for="confirmPassword">Repeat Password</label><br />
-    <input type="password" id="confirmPassword" name="confirmPassword" ng-model="user.confirmPassword" />
+    <input type="password" id="confirmPassword" name="confirmPassword" ng-model="user.confirmPassword" required />
     <div ng-show="userForm.$submitted || userForm.confirmPassword.$touched">
       <span class="error-message" ng-show = "userForm.password.$viewValue !== userForm.confirmPassword.$viewValue">
         Passwords are not equal.

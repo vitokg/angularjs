@@ -1,4 +1,4 @@
-export const UserListController = ($scope, userService, $location, $http) => {
+export const UserListController = ($scope, userService, $location) => {
   $scope.users = userService.getAllUsers();
   $scope.user = {};
   $scope.columns = ['Username', 'First Name', 'Last Name', 'Email', 'Type'];

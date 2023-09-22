@@ -4,9 +4,6 @@ export const passwordStrength = () => {
     require: 'ngModel',
     link: function(scope, el, attrs, ctrl) {
       ctrl.$validators.passwordStrength = (modelValue, viewValue) => {
-        if(ctrl.$isEmpty(modelValue)) {
-          return true;
-        }
 
         if(attrs.passwordPattern) {
           const regex = new RegExp(attrs.passwordPattern);
