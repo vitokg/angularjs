@@ -17,14 +17,14 @@ export const UserListController = ($scope, userService, $location) => {
     }
 
     $scope.onUserCreate = () => {
-      userService.createUser($scope.user);
-      $scope.user = {};
-      $scope.reset();
-    }
+      userService.createUser($scope.user).then(() => {
+        $scope.user = {};
+        console.log('User added successfull');
+      }).catch(() => {
+        console.log('There is an error');
+        }
+      );
 
-  $scope.reset = function() {
-    $scope.user.firstName = "";
-    $scope.user.lastName = "";
-  }
+    }
   }
 

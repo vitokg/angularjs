@@ -25,7 +25,7 @@
   <div>
     <label for="type">Type</label><br />
     <select id="type">
-      <option ng-repeat="type in userTypes" value="{{type}}">{{type}}</option>
+      <option ng-repeat="type in userTypes" ng-model="user.type" value="{{type}}">{{type}}</option>
     </select>
   </div>
 

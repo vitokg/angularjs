@@ -37,7 +37,17 @@ export const userService = () => {
   return {
     getUserById: (id) => usersList.find(item => item.username === id),
     getAllUsers: () => usersList,
-    createUser: (user) => usersList.push(user),
+    createUser: (user) => {
+      return new Promise((resolve, reject) => {
+        const usersCount = usersList.length;
+        usersList.push(user);
+        if(usersList.length  === usersCount + 1) {
+          resolve();
+        } else {
+          reject();
+        }
+      })
+      },
     updateUser: (user) => {
       const index = usersList
         .findIndex(item => item.username === user.username);
