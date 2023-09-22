@@ -6,6 +6,11 @@
   --secondary-btn-color: #F54582;
   --white-color: #FFFFFF;
   --primary-bg-color: #F4F5F8;
+
+  --space-md: 20px;
+  --space-lg: 50px;
+
+  --border-radius: 5px;
 }
 
 * {
@@ -16,18 +21,18 @@ body {
   background-color: var(--body-color);
   font-family: Arial, 'sans-serif';
   font-size: 12px;
-  padding-top: 100px;
+  padding-top: var(--space-lg);
   color: var(--primary-text-color);
 }
 
 .btn {
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   padding: 0.5rem 1rem;
   color: var(--white-color);
   outline: none;
   border: none;
   cursor: pointer;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
 
   &--primary {
     background-color: var(--main-btn-color);
@@ -43,6 +48,7 @@ body {
     box-shadow: none;
     background: transparent;
     opacity: 0.5;
+    padding: 0;
   }
 }
 
@@ -63,13 +69,21 @@ body {
   text-align: center;
 }
 
+.title {
+  font-size: 16px;
+}
 .action-panel {
   margin-bottom: 15px;
+  position: absolute;
+  right: 0;
+  top: -45px;
 }
 
-.content {
+.main-content {
   background-color: var(--white-color);
-  padding-bottom: 50px;
+  padding-bottom: var(--space-lg);
+  position: relative;
+  margin-top: var(--space-lg);
 }
 
 .user-list {
@@ -81,31 +95,66 @@ body {
   }
 
   th, td {
-    padding: 15px 20px;
+    padding: 15px var(--space-md);
     border-bottom: 2px solid var(--white-color);
+  }
+  
+  td {
+    cursor: pointer;
   }
 }
 
-input {
+input, select {
   width: 100%;
   border: none;
   height: 40px;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   background-color: var(--primary-bg-color);
   margin-bottom: 10px;
   padding: 5px 10px;
 }
 
-#popup {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.card {
   background: var(--white-color);
-  padding: 20px
+  padding: var(--space-md);
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
 }
 
 .user-details-page {
-  padding: 20px;
+  padding: var(--space-md);
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+
+  aside {
+    margin-bottom: 30px;
+  }
+  @media (min-width: 1024px) {
+    flex-direction: row;
+
+    aside {
+      order: 2;
+      flex-basis: auto;
+      margin: var(--space-lg) 0 0 var(--space-md);
+
+      > div {
+        width: 400px;
+      }
+    }
+    main {
+      order: 1;
+      flex-grow: 1;
+    }
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
 }

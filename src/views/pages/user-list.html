@@ -1,36 +1,40 @@
-<div id="popup" ng-if="isFormVisible">
-  <div class="text-right">
-    <h3>Create new user</h3>
-    <button type="button" class="btn btn__close" ng-click="hideForm()">x</button>
-  </div>
+<div class="page-container">
+  <aside>
+    <div class="card" ng-if="isFormVisible">
+      <div class="d-flex justify-between">
+        <h3 class="title">Create new user</h3>
+        <button type="button" class="btn btn__close" ng-click="hideForm()">x</button>
+      </div>
 
-  <user-form user="user"></user-form>
-  <div class="text-center">
-    <button type="button" class="btn btn--primary"  ng-click="onUserCreate()">Create</button>
-  </div>
+      <user-form user="user"></user-form>
+      <div class="text-center">
+        <button type="button" class="btn btn--primary"  ng-click="onUserCreate()">Create</button>
+      </div>
+    </div>
+  </aside>
+  <main class="main-content card">
+    <div class="action-panel text-right">
+      <button class="btn btn--primary" ng-click="showForm();">Create User</button>
+    </div>
+    <table class="user-list" >
+      <thead>
+      <tr>
+        <th ng-repeat="column in columns">
+          {{column | uppercase}}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="user in users track by $index" ng-click="viewDetails(user.username)">
+        <td>{{user.username}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.type}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </main>
 </div>
 
-<section class="action-panel text-right">
-  <button class="btn btn--primary" ng-click="showForm();">Create User</button>
-</section>
-<section class="content">
-  <table class="user-list" >
-    <thead>
-    <tr>
-      <th ng-repeat="column in columns">
-        {{column | uppercase}}
-      </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="user in users track by $index" ng-click="viewDetails(user.username)">
-      <td>{{user.username}}</td>
-      <td>{{user.firstName}}</td>
-      <td>{{user.lastName}}</td>
-      <td>{{user.email}}</td>
-      <td>{{user.type}}</td>
-    </tr>
-    </tbody>
-  </table>
-</section>
 

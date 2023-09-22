@@ -1,7 +1,12 @@
-<section class="content user-details-page">
-  <h1>{{user.firstName}} {{user.lastName}}</h1>
+<main class="user-details-page card">
+  <div class="d-flex justify-between">
+    <h1 class="title">{{user.firstName}} {{user.lastName}}</h1>
+    <button type="button" class="btn btn__close" ng-click="hideForm()">x</button>
+  </div>
   <user-form user="user"></user-form>
-  <button type="button" class="btn btn--secondary" ng-click="onDelete()">Delete</button>
-  <button type="button" class="btn btn--primary" ng-click="onSave()">Save</button>
-</section>
+  <div class="d-flex justify-between">
+    <button type="button" class="btn btn--secondary" ng-click="onDelete()">Delete</button>
+    <button type="button" class="btn btn--primary" ng-click="onSave()">Save</button>
+  </div>
+</main>
 

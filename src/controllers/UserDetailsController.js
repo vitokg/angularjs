@@ -3,10 +3,14 @@ export const UserDetailsController = ($scope, $routeParams, userService, $locati
   $scope.user = userService.getUserById($scope.userId);
   $scope.onDelete = () => {
     userService.deleteUser($scope.userId);
-    $location.path('/users');
+    $scope.hideForm();
   }
   $scope.onSave = () => {
     userService.updateUser($scope.user);
+    $scope.hideForm();
+  }
+
+  $scope.hideForm = () => {
     $location.path('/users');
   }
 }
